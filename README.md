@@ -96,7 +96,7 @@ Thanks to these awesome people:
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/sanjana-bobade"><img src="https://avatars.githubusercontent.com/u/sanjana-bobade?v=4" width="100px;" alt=""/><br /> <sub> <b> sanjana bobade </b> </sub> </a> </td>
+    <td align="center"><a href="https://github.com/ganeshbrahma"><img src="https://avatars.githubusercontent.com/u/ganeshbrahma?v=4" width="100px;" alt=""/><br /> <sub> <b> ganesh brahma </b> </sub> </a> </td>
   </tr>
 </table>
 
