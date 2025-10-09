@@ -12,19 +12,19 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 
-# ✅ RDS MySQL connection string
+#  RDS MySQL connection string
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:admin123@mailmatrix-db.ccte8q0ashq5.us-east-1.rds.amazonaws.com/mailmatrix'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-# ✅ AWS S3
+#  AWS S3
 S3_BUCKET = 'mailmatrix-csv-bucket'
 s3 = boto3.client('s3')
 
 # ------------------ User Model (linked to 'users' table) ------------------ #
 class Users(db.Model):
-    __tablename__ = 'users'  # 👈 Explicitly map to your existing table name
+    __tablename__ = 'users'  #  Explicitly map to your existing table name
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(200))
@@ -98,7 +98,7 @@ def login():
         password = request.form['password']
         user = Users.query.filter_by(email=email).first()
 
-        # ✅ Secure bcrypt password check
+        # Secure bcrypt password check
         if user and bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
             session['user'] = user.email
             session['first_name'] = user.first_name
@@ -157,11 +157,11 @@ def home():
 
         db.session.commit()
 
-        # ✅ 2. Upload to S3 and delete the file AFTER parsing
+        # 2. Upload to S3 and delete the file AFTER parsing
         s3.upload_file(local_path, S3_BUCKET, f"uploads/{filename}")
         os.remove(local_path)
 
-        print(f"✅ CSV uploaded and history recorded: {filename}")
+        print(f" CSV uploaded and history recorded: {filename}")
         return redirect('/home')
 
 
